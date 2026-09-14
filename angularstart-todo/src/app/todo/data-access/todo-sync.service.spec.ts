@@ -5,6 +5,7 @@ describe('TodoSyncService', () => {
   let service: TodoSyncService;
 
   beforeEach(() => {
+    localStorage.clear();
     TestBed.configureTestingModule({});
     service = TestBed.inject(TodoSyncService);
   });
