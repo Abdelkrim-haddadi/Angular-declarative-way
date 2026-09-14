@@ -1,0 +1,12 @@
+[
+  {
+    "id": "seed-1",
+    "title": "Explore sync service with signals + connect",
+    "completed": false
+  },
+  {
+    "id": "seed-2",
+    "title": "Explore async service with RxJS declarative state",
+    "completed": true
+  }
+]
