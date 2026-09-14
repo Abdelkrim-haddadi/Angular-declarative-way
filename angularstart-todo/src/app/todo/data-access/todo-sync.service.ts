@@ -48,12 +48,12 @@ export class TodoSyncService {
 
     // effects
     effect(() => {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos()));
+      this.getStorage()?.setItem(STORAGE_KEY, JSON.stringify(this.todos()));
     });
   }
 
   private loadFromStorage(): Todo[] {
-    const rawTodos = localStorage.getItem(STORAGE_KEY);
+    const rawTodos = this.getStorage()?.getItem(STORAGE_KEY);
     if (!rawTodos) {
       return [];
     }
@@ -63,6 +63,14 @@ export class TodoSyncService {
       return Array.isArray(todos) ? todos : [];
     } catch {
       return [];
+    }
+  }
+
+  private getStorage(): Storage | null {
+    try {
+      return globalThis.localStorage ?? null;
+    } catch {
+      return null;
     }
   }
 }
