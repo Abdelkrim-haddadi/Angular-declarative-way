@@ -10,7 +10,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "lint": "eslint \"src/**/*.{ts,html}\" --no-error-on-unmatched-pattern",
-    "test": "ng test --watch=false --browsers=chromium"
+    "test": "ng test --watch=false"
   },
   "private": true,
   "packageManager": "npm@10.9.8",

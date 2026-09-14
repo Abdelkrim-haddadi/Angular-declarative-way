@@ -50,7 +50,7 @@ You can also run the same scripts from `angularstart-todo/` directly with `npm r
 Notes:
 
 - `npm run lint` uses the repository-root ESLint config (auto-discovered from the workspace root) so conventions are enforced consistently.
-- `npm run test` runs Vitest in non-watch mode with Playwright Chromium (`ng test --watch=false --browsers=chromium`).
+- `npm run test` runs Vitest in non-watch mode (`ng test --watch=false`) using `vitest.config.ts`, which pins Playwright to `chromium` and sets `passWithNoTests: false`.
 
 ## Angular upgrades
 
