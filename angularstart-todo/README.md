@@ -14,30 +14,47 @@ This app uses **Angular v22** (`@angular/core` and `@angular/cli` latest stable 
 
 ## Run locally
 
-From the repository root:
+Install once at the repository root (workspace install + shared lockfile):
+
+```bash
+npm install
+```
+
+Run the app from the root:
+
+```bash
+npm start -w angularstart-todo
+```
+
+Or from this folder:
 
 ```bash
 cd angularstart-todo
-npm ci --legacy-peer-deps
-npm run start
+npm start
 ```
 
 Then open `http://localhost:4200`.
 
 ## Scripts
 
-Run these from `angularstart-todo/`:
+Run from the repository root:
 
 ```bash
-npm run lint
-npm run build
-npm run test
+npm run lint -w angularstart-todo
+npm run build -w angularstart-todo
+npm run test -w angularstart-todo
 ```
+
+You can also run the same scripts from `angularstart-todo/` directly with `npm run <script>`.
 
 Notes:
 
-- `npm run lint` delegates to the repository-root ESLint config so conventions are enforced consistently.
+- `npm run lint` uses the repository-root ESLint config (auto-discovered from the workspace root) so conventions are enforced consistently.
 - `npm run test` runs headless (`ng test --watch=false --browsers=ChromeHeadless`).
+
+## Angular upgrades
+
+Keep Angular upgrades isolated to this workspace by running `ng update` from `angularstart-todo/` (or `npm run ng -w angularstart-todo -- update ...` from the root). This preserves clean app-level migration boundaries while still using a shared root install/lockfile.
 
 ## Example feature: `todo`
 
