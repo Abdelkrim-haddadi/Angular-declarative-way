@@ -1,15 +1,12 @@
-import { inject } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { LOCAL_STORAGE, TodoSyncService } from './todo-sync.service';
+import { TodoSyncService } from './todo-sync.service';
 
 describe('TodoSyncService', () => {
   let service: TodoSyncService;
-  let localStorage: Storage;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    localStorage = TestBed.runInInjectionContext(() => inject(LOCAL_STORAGE));
     localStorage.clear();
+    TestBed.configureTestingModule({});
     service = TestBed.inject(TodoSyncService);
   });
 

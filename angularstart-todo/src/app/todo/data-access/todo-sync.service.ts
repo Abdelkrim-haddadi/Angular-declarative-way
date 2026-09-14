@@ -1,12 +1,4 @@
-import {
-  Injectable,
-  InjectionToken,
-  PLATFORM_ID,
-  computed,
-  effect,
-  inject,
-  signal,
-} from '@angular/core';
+import { Injectable, computed, effect, signal } from '@angular/core';
 import { Subject } from 'rxjs';
 import { connect } from 'ngxtension/connect';
 import { AddTodo, Todo } from '../interfaces/todo';
@@ -17,13 +9,6 @@ interface TodoSyncState {
 
 const STORAGE_KEY = 'angularstart-todo.sync';
 
-export const LOCAL_STORAGE = new InjectionToken<Storage>('window local storage object', {
-  providedIn: 'root',
-  factory: () => {
-    return inject(PLATFORM_ID) === 'browser' ? window.localStorage : ({} as Storage);
-  },
-});
-
 @Injectable({ providedIn: 'root' })
 export class TodoSyncService {
   // sources
@@ -32,8 +17,6 @@ export class TodoSyncService {
   readonly remove$ = new Subject<string>();
 
   // state
-  private readonly localStorage = inject(LOCAL_STORAGE);
-
   private readonly state = signal<TodoSyncState>({
     todos: this.loadFromStorage(),
   });
@@ -65,12 +48,12 @@ export class TodoSyncService {
 
     // effects
     effect(() => {
-      this.localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos()));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos()));
     });
   }
 
   private loadFromStorage(): Todo[] {
-    const rawTodos = this.localStorage.getItem(STORAGE_KEY);
+    const rawTodos = localStorage.getItem(STORAGE_KEY);
     if (!rawTodos) {
       return [];
     }
