@@ -55,12 +55,31 @@ Everything lives under `.github/` so it's versioned and shared across the team.
 2. **Editing Angular files** — the instructions apply automatically; suggestions follow our conventions.
 3. **Scaffolding new code** — in Copilot Chat, run a prompt, e.g. `/new-feature`, `/new-signal-service`, `/new-rxjs-service`, `/new-ui-component`.
 
+## npm workspaces setup
+
+This repo uses npm workspaces with a single install/lockfile at the root for both repository tooling and the Angular app.
+
+```bash
+npm install
+```
+
+Common commands from the repo root:
+
+```bash
+npm run lint
+npm run build -w angularstart-todo
+npm run test -w angularstart-todo
+npm start -w angularstart-todo
+```
+
+Angular upgrades remain isolated to the app workspace. Run `ng update` inside `angularstart-todo/` (or via `npm run ng -w angularstart-todo -- update ...`) so Angular migrations only affect the app package.
+
 ## Enforcement & tooling
 
 - **ESLint** (`angular-eslint` + `typescript-eslint`) enforces the Angular declarative conventions, including standalone/signals/OnPush preferences, selector prefixes, modern template control flow, and the `ui/**` dumb-component no-DI rule.
 - **Prettier** + **EditorConfig** keep formatting consistent across editors.
 - **Husky** + **lint-staged** run linting/formatting on staged files before commit.
-- **CI** runs lint/build/test checks on pull requests and pushes (`--if-present` so build/test activate once the app is scaffolded).
+- **CI** runs lint/build/test checks on pull requests and pushes via workspace-aware npm commands from the repository root.
 - **PR template** adds a review checklist aligned with repository conventions.
 
 ## Reference patterns
