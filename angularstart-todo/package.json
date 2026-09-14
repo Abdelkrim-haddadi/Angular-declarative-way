@@ -1,13 +1,16 @@
 {
   "name": "angularstart-todo",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=22.22.3"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "lint": "npm --prefix .. run lint",
-    "test": "sh -c 'ng test --watch=false --browsers=chromium'"
+    "test": "sh -c 'ng test --watch=false --browsers=ChromeHeadless || ng test --watch=false --browsers=chromium'"
   },
   "private": true,
   "packageManager": "npm@10.9.8",

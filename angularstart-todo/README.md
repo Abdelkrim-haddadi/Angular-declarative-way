@@ -6,13 +6,19 @@
 
 This app uses **Angular v22** (`@angular/core` and `@angular/cli` latest stable at implementation time). The requested v22 exists, so no fallback was needed.
 
+## Node.js version used
+
+- CI and local parity are pinned to **Node.js 26** (`.github/workflows/ci.yml` and repo-root `.nvmrc`).
+- Node 26 is resolvable in `actions/setup-node`, so it is used directly instead of falling back to Node 24/22.
+- The app declares `"engines": { "node": ">=22.22.3" }` because that is the Angular CLI minimum.
+
 ## Run locally
 
 From the repository root:
 
 ```bash
 cd angularstart-todo
-npm install --legacy-peer-deps
+npm ci --legacy-peer-deps
 npm run start
 ```
 
