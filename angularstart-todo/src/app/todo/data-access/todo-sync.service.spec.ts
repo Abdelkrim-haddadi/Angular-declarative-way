@@ -5,7 +5,7 @@ describe('TodoSyncService', () => {
   let service: TodoSyncService;
 
   beforeEach(() => {
-    localStorage.clear();
+    // localStorage is cleared globally in src/test-setup.ts before each test.
     TestBed.configureTestingModule({});
     service = TestBed.inject(TodoSyncService);
   });

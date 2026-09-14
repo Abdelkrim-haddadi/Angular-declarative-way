@@ -5,6 +5,7 @@ export default defineConfig({
   test: {
     include: ['src/**/*.spec.ts'],
     passWithNoTests: false,
+    setupFiles: ['src/test-setup.ts'],
     browser: {
       enabled: true,
       provider: playwright(),
