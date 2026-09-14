@@ -13,29 +13,29 @@ interface EntityState {
 
 @Injectable({ providedIn: 'root' })
 export class FeatureService {
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
   // state
-  private state = signal<EntityState>({
+  private readonly state = signal<EntityState>({
     items: [],
     loading: true,
     error: null,
   });
 
   // selectors
-  items = computed(() => this.state().items);
-  loading = computed(() => this.state().loading);
-  error = computed(() => this.state().error);
+  readonly items = computed(() => this.state().items);
+  readonly loading = computed(() => this.state().loading);
+  readonly error = computed(() => this.state().error);
 
   // sources
-  private error$ = new Subject<string>();
-  private loaded$ = this.http.get<Entity[]>('/api/entities').pipe(
+  private readonly error$ = new Subject<string>();
+  private readonly loaded$ = this.http.get<Entity[]>('/api/entities').pipe(
     catchError((err) => {
       this.error$.next(err.message);
       return EMPTY;
     }),
   );
-  reload$ = new Subject<void>();
+  readonly reload$ = new Subject<void>();
 
   constructor() {
     // reducers

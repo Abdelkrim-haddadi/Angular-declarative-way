@@ -11,15 +11,15 @@ interface EntityState {
 @Injectable({ providedIn: 'root' })
 export class FeatureService {
   // state
-  private state = signal<EntityState>({ items: [], loaded: false });
+  private readonly state = signal<EntityState>({ items: [], loaded: false });
 
   // selectors
-  items = computed(() => this.state().items);
-  loaded = computed(() => this.state().loaded);
+  readonly items = computed(() => this.state().items);
+  readonly loaded = computed(() => this.state().loaded);
 
   // sources
-  add$ = new Subject<AddEntity>();
-  remove$ = new Subject<string>();
+  readonly add$ = new Subject<AddEntity>();
+  readonly remove$ = new Subject<string>();
 
   constructor() {
     // reducers
