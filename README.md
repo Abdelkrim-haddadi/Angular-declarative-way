@@ -9,24 +9,27 @@ Clone this repo (or copy its `.github/` folder) and Copilot will automatically s
 Everything lives under `.github/` so it's versioned and shared across the team.
 
 ### Always-on instructions
-| File | Applies to | Purpose |
-|------|-----------|---------|
+
+| File                              | Applies to | Purpose                                                                                                                              |
+| --------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `.github/copilot-instructions.md` | Everything | The backbone: folder architecture, smart/dumb split, modern signal APIs, the sync/async state menu, naming, routing, forms, cleanup. |
 
 ### Path-scoped instructions (`applyTo` globs)
-| File | Applies to | Purpose |
-|------|-----------|---------|
-| `.github/instructions/data-access.instructions.md` | `**/data-access/**` | Two state styles: **sync** (signals + ngxtension `connect`) and **async** (RxJS-declarative). |
-| `.github/instructions/ui-components.instructions.md` | `**/ui/**` | Dumb/presentational components (`input()`/`output()` only, never inject). |
-| `.github/instructions/forms.instructions.md` | `**/*.component.ts` | Reactive forms: `nonNullable.group`, sync/async/cross-field validators, `FormArray`. |
+
+| File                                                 | Applies to          | Purpose                                                                                       |
+| ---------------------------------------------------- | ------------------- | --------------------------------------------------------------------------------------------- |
+| `.github/instructions/data-access.instructions.md`   | `**/data-access/**` | Two state styles: **sync** (signals + ngxtension `connect`) and **async** (RxJS-declarative). |
+| `.github/instructions/ui-components.instructions.md` | `**/ui/**`          | Dumb/presentational components (`input()`/`output()` only, never inject).                     |
+| `.github/instructions/forms.instructions.md`         | `**/*.component.ts` | Reactive forms: `nonNullable.group`, sync/async/cross-field validators, `FormArray`.          |
 
 ### On-demand prompts (the "menu")
-| Prompt | Generates |
-|--------|-----------|
-| `.github/prompts/new-feature.prompt.md` | A whole feature slice (smart + dumb + data-access + interfaces). |
-| `.github/prompts/new-signal-service.prompt.md` | A **sync** service (signals + ngxtension `connect`). |
-| `.github/prompts/new-rxjs-service.prompt.md` | An **async** service (RxJS-declarative). |
-| `.github/prompts/new-ui-component.prompt.md` | A single dumb component. |
+
+| Prompt                                         | Generates                                                        |
+| ---------------------------------------------- | ---------------------------------------------------------------- |
+| `.github/prompts/new-feature.prompt.md`        | A whole feature slice (smart + dumb + data-access + interfaces). |
+| `.github/prompts/new-signal-service.prompt.md` | A **sync** service (signals + ngxtension `connect`).             |
+| `.github/prompts/new-rxjs-service.prompt.md`   | An **async** service (RxJS-declarative).                         |
+| `.github/prompts/new-ui-component.prompt.md`   | A single dumb component.                                         |
 
 ## Core conventions at a glance
 
@@ -61,7 +64,15 @@ Everything lives under `.github/` so it's versioned and shared across the team.
 - **PR template** adds a review checklist aligned with repository conventions.
 
 ## Reference patterns
+
 - Signals + `connect` (sync): quicklists / giflist `ngxtension` branches
 - RxJS-declarative (async): chat, giflist async
 - Forms: advanced-forms
 - Guards / auth: chat
+
+## Example app
+
+This repository now includes a runnable example app at [`angularstart-todo/`](./angularstart-todo/), showcasing a `todo` feature slice that demonstrates both supported state styles:
+
+- synchronous signals + `ngxtension/connect`
+- asynchronous RxJS-declarative state
