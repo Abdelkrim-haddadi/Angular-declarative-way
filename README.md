@@ -52,6 +52,14 @@ Everything lives under `.github/` so it's versioned and shared across the team.
 2. **Editing Angular files** — the instructions apply automatically; suggestions follow our conventions.
 3. **Scaffolding new code** — in Copilot Chat, run a prompt, e.g. `/new-feature`, `/new-signal-service`, `/new-rxjs-service`, `/new-ui-component`.
 
+## Enforcement & tooling
+
+- **ESLint** (`angular-eslint` + `typescript-eslint`) enforces the Angular declarative conventions, including standalone/signals/OnPush preferences, selector prefixes, modern template control flow, and the `ui/**` dumb-component no-DI rule.
+- **Prettier** + **EditorConfig** keep formatting consistent across editors.
+- **Husky** + **lint-staged** run linting/formatting on staged files before commit.
+- **CI** runs lint/build/test checks on pull requests and pushes (`--if-present` so build/test activate once the app is scaffolded).
+- **PR template** adds a review checklist aligned with repository conventions.
+
 ## Reference patterns
 - Signals + `connect` (sync): quicklists / giflist `ngxtension` branches
 - RxJS-declarative (async): chat, giflist async
